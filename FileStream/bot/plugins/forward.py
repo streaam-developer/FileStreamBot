@@ -1,7 +1,6 @@
 from FileStream.config import Telegram, Server
 from pyrogram import Client, emoji, filters
-from database import get_search_results
-from database import Data
+from FileStream.utils.database import Data, get_search_results
 from FileStream.config import Telegram, Server
 import asyncio
 from pyrogram.errors import FloodWait
