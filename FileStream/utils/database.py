@@ -139,6 +139,25 @@ class Database:
 
 
 ##############################################################################
+Telegram.DATABASE_URI, Telegram.DATABASE_NAME, COLLECTION_NAME = Telegram.DATABASE_URI, Telegram.DATABASE_NAME, Telegram.COLLECTION_NAME
+
+client = AsyncIOMotorClient(Telegram.DATABASE_URI)
+db = client[Telegram.DATABASE_NAME]
+instance = Instance(db)
+
+
+@instance.register
+class Data(Document):
+    id = fields.StrField(attribute='_id')
+    channel = fields.StrField()
+    file_type = fields.StrField()
+    message_id = fields.IntField()
+    use = fields.StrField()
+    methord = fields.StrField()
+    caption = fields.StrField()
+
+    class Meta:
+        collection_name = COLLECTION_NAME
 
 async def save_data(id, channel, message_id, methord, caption, file_type):
     try:
