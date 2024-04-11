@@ -111,14 +111,6 @@ async def run(bot, message):
         [
             [
                 InlineKeyboardButton("All Messages", callback_data="all")
-            ],
-            [
-                InlineKeyboardButton("Document", callback_data="docs"),
-                InlineKeyboardButton("Photos", callback_data="photos")
-            ],
-            [
-                InlineKeyboardButton("Videos", callback_data="videos"),
-                InlineKeyboardButton("Audios", callback_data="audio")
             ]
         ]
         )
@@ -134,31 +126,7 @@ async def cb_handler(bot: Client, query: CallbackQuery):
     if query.data == "docs":
         filter="document"
     elif query.data == "all":
-        filter="empty"
-    elif query.data == "photos":
-        filter="photo"
-    elif query.data == "videos":
-        filter="video"
-    elif query.data == "audio":
-        filter="audio"
-    caption=None
-
-
-    await query.message.delete()
-   # while True:
-     #   try:
-      #      get_caption = await bot.ask(text = "Do you need a custom caption?\n\nIf yes , Send me caption \n\nif No send '0'", chat_id = query.from_user.id, filters=filters.text, timeout=30)
-     #   except TimeoutError:
-    #        await bot.send_message(query.from_user.id, "Error!!\n\nRequest timed out.\nRestart by using /index")
-     #       return
-    #    input=get_caption.text
-  #      if input == "0":
-   #         caption=None
-   #     else:
-     #       caption=input
-  #      break
-
-    m = await bot.send_message(
+        m = await bot.send_message(
         text="Indexing Started",
         chat_id=query.from_user.id
     )
@@ -166,7 +134,7 @@ async def cb_handler(bot: Client, query: CallbackQuery):
     mcount = 0
     FROM=channel_id_
     try:
-        async for MSG in bot.USER.search_messages(chat_id=FROM,offset=skip_no,limit=limit_no,filter=filter):
+        async for MSG in bot.USER.search_messages(chat_id=FROM,offset=skip_no,limit=limit_no,filter=empty):
             if channel_type == "public":
                 methord="bot"
                 channel=FROM
