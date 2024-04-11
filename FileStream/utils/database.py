@@ -144,7 +144,7 @@ Telegram.DATABASE_URL, Telegram.DATABASE_NAME, COLLECTION_NAME = Telegram.DATABA
 
 client = AsyncIOMotorClient(Telegram.DATABASE_URL)
 db = client[Telegram.DATABASE_NAME]
-instance = Instance(db)
+instance = Instance.from_db(db)
 
 
 @instance.register
