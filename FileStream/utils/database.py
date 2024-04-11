@@ -1,5 +1,9 @@
 import pymongo
 import time
+from pymongo.errors import DuplicateKeyError
+from umongo import Instance, Document, fields
+from motor.motor_asyncio import AsyncIOMotorClient
+from marshmallow.exceptions import ValidationError
 import motor.motor_asyncio
 from bson.objectid import ObjectId
 from bson.errors import InvalidId
@@ -132,3 +136,37 @@ class Database:
             await self.col.update_one({"id": id}, {"$inc": {"Links": -1}})
         elif operation == "+":
             await self.col.update_one({"id": id}, {"$inc": {"Links": 1}})
+
+
+##############################################################################
+
+async def save_data(id, channel, message_id, methord, caption, file_type):
+    try:
+        data = Data(
+            id=id,
+            use = "forward",
+            channel=channel,
+            message_id=message_id,
+            methord=methord,
+            caption=caption,
+            file_type=file_type
+        )
+    except ValidationError:
+        print('Error occurred while saving file in database')
+    try:
+        await data.commit()
+    except DuplicateKeyError:
+        print("Already saved in Database")
+    else:
+        try:
+            print("Messsage saved in DB")
+        except:
+            pass
+
+async def get_search_results():
+    filter = {'use': "forward"}
+    cursor = Data.find(filter)
+    cursor.sort('$natural', -1)
+    cursor.skip(0).limit(1)
+    Messages = await cursor.to_list(length=1)
+    return Messages
