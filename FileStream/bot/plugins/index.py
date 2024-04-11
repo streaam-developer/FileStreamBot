@@ -4,9 +4,9 @@ from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
 from pyrogram.errors import FloodWait
 from pyrogram.errors.exceptions.bad_request_400 import InviteHashExpired, UserAlreadyParticipant
-from config import Config
+from FileStream.config import Telegram, Server
 import re
-from bot import Bot
+
 from asyncio.exceptions import TimeoutError
 from database import save_data
 import logging
@@ -19,7 +19,7 @@ caption=""
 channel_type=""
 channel_id_=""
 IST = pytz.timezone('Asia/Kolkata')
-OWNER=int(Config.OWNER_ID)
+OWNER=int(Telegram.OWNER_ID)
 
 
 @Client.on_message(filters.private & filters.command(["index"]))
