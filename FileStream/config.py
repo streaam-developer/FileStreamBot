@@ -8,6 +8,7 @@ class Telegram:
     API_HASH = str(env.get("API_HASH", "8d89700b2fc09a3aa6c906cbed65b040"))
     BOT_TOKEN = str(env.get("BOT_TOKEN", "7034883166:AAFYA3oAaX6aIDOYgk55Jgd-ilHLwZGGsAM"))
     OWNER_ID = int(env.get('OWNER_ID', '5791145987'))
+    TO_CHANNEL = int(env.get("TO_CHANNEL", "-1002144737654"))   # Logs channel for user logs
     WORKERS = int(env.get("WORKERS", "6"))  # 6 workers = 6 commands at once
     DATABASE_URL = str(env.get('DATABASE_URL', "mongodb+srv://fehebaw351:nHbjrujWqgqLR58H@cluster0.lekn97z.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"))
     UPDATES_CHANNEL = str(env.get('UPDATES_CHANNEL', "streaamdb1"))
