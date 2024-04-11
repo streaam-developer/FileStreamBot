@@ -2,6 +2,7 @@ import pymongo
 import time
 from pymongo.errors import DuplicateKeyError
 from umongo import Instance, Document, fields
+from FileStream.config import Telegram, Server
 from motor.motor_asyncio import AsyncIOMotorClient
 from marshmallow.exceptions import ValidationError
 import motor.motor_asyncio
