@@ -11,6 +11,8 @@ class Telegram:
     TO_CHANNEL = int(env.get("TO_CHANNEL", "-1002144737654"))   # Logs channel for user logs
     WORKERS = int(env.get("WORKERS", "6"))  # 6 workers = 6 commands at once
     DATABASE_URL = str(env.get('DATABASE_URL', "mongodb+srv://fehebaw351:nHbjrujWqgqLR58H@cluster0.lekn97z.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"))
+    DATABASE_NAME = os.env.get("DATABASE_NAME", "cluste0")
+    COLLECTION_NAME = os.env.get('COLLECTION_NAME', 'Data')
     UPDATES_CHANNEL = str(env.get('UPDATES_CHANNEL', "streaamdb1"))
     SESSION_NAME = str(env.get('SESSION_NAME', 'store05'))
     FORCE_SUB_ID = env.get('FORCE_SUB_ID', "-1001983630683")
