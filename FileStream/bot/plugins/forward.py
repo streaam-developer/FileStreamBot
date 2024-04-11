@@ -1,8 +1,8 @@
-from config import Config
+from FileStream.config import Telegram, Server
 from pyrogram import Client, emoji, filters
 from database import get_search_results
 from database import Data
-from config import Config
+from FileStream.config import Telegram, Server
 import asyncio
 from pyrogram.errors import FloodWait
 import random
@@ -15,8 +15,8 @@ IST = pytz.timezone('Asia/Kolkata')
 MessageCount = 0
 BOT_STATUS = "0"
 status = set(int(x) for x in (BOT_STATUS).split())
-OWNER=int(Config.OWNER_ID)
-@Client.on_message(filters.command("status"))
+OWNER=int(Telegram.OWNER_ID)
+@Client.on_message(filters.command("stats"))
 async def count(bot, m):
     if 1 in status:
         await m.reply_text("Currently Bot is forwarding messages.")
@@ -69,7 +69,7 @@ async def forward(bot, message):
             methord = msg.methord
             caption = msg.caption
             file_type = msg.file_type
-            chat_id=Config.TO_CHANNEL
+            chat_id=Telegram.TO_CHANNEL
             if methord == "bot":
                 try:
                     if file_type in ("document", "video", "audio", "photo"):
