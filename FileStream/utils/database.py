@@ -140,9 +140,9 @@ class Database:
 
 
 ##############################################################################
-Telegram.DATABASE_URI, Telegram.DATABASE_NAME, COLLECTION_NAME = Telegram.DATABASE_URI, Telegram.DATABASE_NAME, Telegram.COLLECTION_NAME
+Telegram.DATABASE_URL, Telegram.DATABASE_NAME, COLLECTION_NAME = Telegram.DATABASE_URL, Telegram.DATABASE_NAME, Telegram.COLLECTION_NAME
 
-client = AsyncIOMotorClient(Telegram.DATABASE_URI)
+client = AsyncIOMotorClient(Telegram.DATABASE_URL)
 db = client[Telegram.DATABASE_NAME]
 instance = Instance(db)
 
