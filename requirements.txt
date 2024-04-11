@@ -7,3 +7,11 @@ aiofiles
 dnspython
 requests
 jinja2
+TgCrypto
+pyrogram
+Dnspython
+pyromod
+umongo
+motor
+pytz
+asyncio
