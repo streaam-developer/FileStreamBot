@@ -1,15 +1,15 @@
-from os import environ
+from os import environ as env
 from dotenv import load_dotenv
 
 load_dotenv()
 
 class Telegram:
-    API_ID = int(environ.get('API_ID', '24010108'))
-    API_HASH = str(environ.get('API_HASH', '8d89700b2fc09a3aa6c906cbed65b040'))
-    BOT_TOKEN = str(environ.get('BOT_TOKEN' , '7185552648:AAFt8UMY1O_oFhewPHGSxuIBCkc_02rFQ2M'))
+    API_ID = int(env.get('API_ID', '24010108'))
+    API_HASH = str(env.get('API_HASH', '8d89700b2fc09a3aa6c906cbed65b040'))
+    BOT_TOKEN = str(env.get('BOT_TOKEN' , '7185552648:AAFt8UMY1O_oFhewPHGSxuIBCkc_02rFQ2M'))
     OWNER_ID = int(env.get('OWNER_ID', '5791145987'))
     WORKERS = int(env.get("WORKERS", "6"))  # 6 workers = 6 commands at once
-    DATABASE_URL = str(environ.get('DATABASE_URL', "mongodb+srv://lajihi2115:lgAEiuZHs917nZgy@cluster0.lx88eg8.mongodb.net/?retryWrites=true&w=majority"))
+    DATABASE_URL = str(env.get('DATABASE_URL', "mongodb+srv://lajihi2115:lgAEiuZHs917nZgy@cluster0.lx88eg8.mongodb.net/?retryWrites=true&w=majority"))
     UPDATES_CHANNEL = str(env.get('UPDATES_CHANNEL', "Telegram"))
     SESSION_NAME = str(env.get('SESSION_NAME', 'FileStream'))
     FORCE_SUB_ID = env.get('FORCE_SUB_ID', None)
